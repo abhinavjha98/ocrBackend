@@ -20,15 +20,16 @@ class ImageView(viewsets.ViewSet):
         reader = easyocr.Reader(['en'])
         data = request.data
         multiple_files = request.FILES
-        img = multiple_files.getlist("media_file")[0]
-        print(type(img))
+        # img = multiple_files.getlist("media_file")[0]
+        # print(type(img))
         for i in range(len(multiple_files.getlist("media_file"))):
 
-            print(multiple_files.getlist("media_file")[i])
-
-            path = default_storage.save('a.png', ContentFile(img.read()))
+            img = multiple_files.getlist("media_file")[i]
+            img_name = img.name.split(".")[0]
+            print(img_name)
+            path = default_storage.save(img.name, ContentFile(img.read()))
         # cv2.imwrite("img", img)
-            image_convert('a.png',reader=reader)
+            image_convert(img.name,reader=reader)
         return Response(
                     data={'status': True}, 
                     status=status.HTTP_200_OK
