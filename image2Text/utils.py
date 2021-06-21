@@ -28,18 +28,18 @@ def image_convert(file_name,reader):
             file_names = file_name.split(".")
             new_file_name = "updated_"+file_names[0]+"."+file_names[1]
             try:
-                cv2.imwrite("/home/abhinav/Projects/ocrBackend/ocrBackend/image2Text/images/"+new_file_name, img)
+                cv2.imwrite("image2Text/images/"+new_file_name, img)
             except:
                 pass
             try:
-                shutil.move(file_name,'/home/abhinav/Projects/ocrBackend/ocrBackend/image2Text/images/')
+                shutil.move(file_name,'image2Text/images/')
                 print("Successfully changed the image")
             except:
                 pass
                 
         else:
             try:
-                shutil.move(file_name,'/home/abhinav/Projects/ocrBackend/ocrBackend/image2Text/documents/')
+                shutil.move(file_name,'image2Text/documents/')
                 print("Successfully changed the document")
             except:
                 pass
