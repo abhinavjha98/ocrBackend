@@ -8,8 +8,8 @@ img_names = []
 import json
 
 
-def image_convert(file_name):
-    reader = easyocr.Reader(['en'])
+def image_convert(file_name,reader):
+    
     output = reader.readtext(file_name)
     count = 0
     for detection in output:
